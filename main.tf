@@ -1,6 +1,6 @@
 # Define the AWS provider configuration.
 provider "aws" {
-  region = "us-east-1"  # Replace with your desired AWS region.
+  region = "us-east-1"  
 }
 
 variable "cidr" {
@@ -8,8 +8,8 @@ variable "cidr" {
 }
 
 resource "aws_key_pair" "example" {
-  key_name   = "terraform-demo-abhi"  # Replace with your desired key name
-  public_key = file("~/.ssh/id_rsa.pub")  # Replace with the path to your public key file
+  key_name   = "terraform-demo-sneha"  
+  public_key = file("~/.ssh/id_rsa.pub")  
 }
 
 resource "aws_vpc" "myvpc" {
@@ -81,7 +81,7 @@ resource "aws_instance" "server" {
 
   connection {
     type        = "ssh"
-    user        = "ubuntu"  # Replace with the appropriate username for your EC2 instance
+    user        = "ubuntu"  
     private_key = file("~/.ssh/id_rsa")  # Replace with the path to your private key
     host        = self.public_ip
   }
@@ -96,7 +96,7 @@ resource "aws_instance" "server" {
     inline = [
       "echo 'Hello from the remote instance'",
       "sudo apt update -y",  # Update package lists (for ubuntu)
-      "sudo apt-get install -y python3-pip",  # Example package installation
+      "sudo apt-get install -y python3-pip",  
       "cd /home/ubuntu",
       "sudo pip3 install flask",
       "sudo python3 app.py &",
